@@ -92,7 +92,27 @@ Debe verse como **una sola línea**:
 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAA... nombre.apellido
 ```
 
-Envíala por el medio que indique el docente. **Si lo que vas a enviar empieza con `-----BEGIN OPENSSH PRIVATE KEY-----`, DETENTE: es tu llave privada.**
+### Entrega: pega tu llave pública en el pad del curso
+
+👉 **https://pad.riseup.net/p/Principios_de_criptograf%C3%ADa**
+
+Reglas:
+
+1. Pega tu llave en **una sola línea**, al final del pad: el contenido completo de tu `.pub`, tal cual sale del comando anterior.
+2. **Una línea por estudiante.** No agregues nada más en esa línea (ni tu nombre aparte, ni guiones, ni viñetas). Tu nombre ya va en la llave, al final (`nombre.apellido`).
+3. **No modifiques ni borres las líneas de tus compañeros.**
+4. Si te equivocaste, **corrige solo tu propia línea**.
+
+Ejemplo de cómo debe quedar el pad:
+
+```
+ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBB... maria.lopez
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGq7... juan.perez
+```
+
+**Si lo que vas a pegar empieza con `-----BEGIN OPENSSH PRIVATE KEY-----`, DETENTE: es tu llave privada.** Si la pegaste por error, bórrala del pad y genera un par nuevo: esa llave ya no es secreta.
+
+> **Pregunta para pensar:** el pad lo puede editar cualquiera que tenga el enlace. ¿Qué impide que alguien reemplace tu llave por la suya y entre al servidor con tu usuario? La respuesta está en la verificación de huellas de la siguiente sección.
 
 ### ¿Por qué la privada nunca se comparte?
 
