@@ -11,9 +11,13 @@ En este taller vas a:
 
 | Dato | Valor |
 |---|---|
-| Servidor | `158.23.160.9` |
+| Servidor | `54.157.214.128` |
 | Tu usuario | `est_nombre_apellido` (el docente te lo confirma) |
 | Archivo | `/libros/libro.pdf` |
+
+> ⚠️ **El servidor cambió de dirección** (antes `158.23.160.9`). Usa la IP y las huellas de esta guía. Si tu `known_hosts` guarda la IP vieja, no te afecta: la nueva es un servidor distinto.
+
+**Hay dos actividades.** El libro para la primera; para la segunda, el laboratorio forense: **[LAB_FORENSE.md](LAB_FORENSE.md)**.
 
 ---
 
@@ -140,8 +144,8 @@ Así el docente confirma que la llave que recibió es la tuya y que nadie la cam
 La primera vez que te conectes verás algo así:
 
 ```
-The authenticity of host '158.23.160.9 (158.23.160.9)' can't be established.
-ED25519 key fingerprint is SHA256:2Ni2QS96KEqatEQwwdqr++HZ0/vyYE3vRkiiCAuTcf8.
+The authenticity of host '54.157.214.128 (54.157.214.128)' can't be established.
+ED25519 key fingerprint is SHA256:acKi2UauHa2YeEyFn5Y0D7OG+2NhBi/Hf57ZCgbQNHE.
 Are you sure you want to continue connecting (yes/no/[fingerprint])?
 ```
 
@@ -149,9 +153,9 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])?
 
 | Tipo | Huella SHA256 |
 |---|---|
-| ED25519 | `SHA256:2Ni2QS96KEqatEQwwdqr++HZ0/vyYE3vRkiiCAuTcf8` |
-| ECDSA | `SHA256:GgqZj2oLPSFsUh0R50jZ/u8E5nchAkWvdWEts8ATCY8` |
-| RSA | `SHA256:yUptiY3I3WFwxW+Y67ST1P6eC5hP9cM0whGdNg3OZec` |
+| ED25519 | `SHA256:acKi2UauHa2YeEyFn5Y0D7OG+2NhBi/Hf57ZCgbQNHE` |
+| ECDSA | `SHA256:6NawMFlx1KJ3Hh7rlADUKmxuaFcvsw+X+nAwDADxglk` |
+| RSA | `SHA256:aAvS+5lE4BJjYe7wtxqilMzQZHz55jsPXN6z+buHTwI` |
 
 - **Si coincide**, escribe `yes`.
 - **Si NO coincide, escribe `no`** y avisa al docente.
@@ -178,7 +182,7 @@ Tu llave privada nunca sale de tu equipo, ni siquiera ante un MITM. Lo que sí p
 Reemplaza `est_nombre_apellido` por tu usuario:
 
 ```
-sftp est_nombre_apellido@158.23.160.9
+sftp est_nombre_apellido@54.157.214.128
 ```
 
 Si tu llave tiene passphrase, te la pedirá: es **la de tu llave**, no una contraseña del servidor.
@@ -199,7 +203,7 @@ El archivo queda en la carpeta desde donde ejecutaste `sftp`.
 **Prueba (y entiende) las restricciones:**
 - `put algo.txt` falla: el servidor está en **solo lectura**.
 - `cd /etc` falla: estás en una **jaula (chroot)**. Para ti, `/` es la carpeta del taller.
-- `ssh est_nombre_apellido@158.23.160.9` responde *"This service allows sftp connections only."*
+- `ssh est_nombre_apellido@54.157.214.128` responde *"This service allows sftp connections only."*
 
 ### Verifica la integridad del libro
 
@@ -241,7 +245,7 @@ El servidor no aceptó ninguna de tus llaves. Causas posibles:
 - **Estás usando otra llave.** Indícala explícitamente:
 
   ```
-  sftp -i ~/.ssh/id_ecdsa est_nombre_apellido@158.23.160.9
+  sftp -i ~/.ssh/id_ecdsa est_nombre_apellido@54.157.214.128
   ```
 
   En Windows: `-i $env:USERPROFILE\.ssh\id_ecdsa`
@@ -260,7 +264,7 @@ La llave del servidor **no es la que guardaste** en `known_hosts`. Puede ser:
 **No lo ignores. No borres la línea "para que funcione".** Avisa al docente y compara de nuevo con las huellas oficiales. Solo si el docente confirma un cambio legítimo:
 
 ```
-ssh-keygen -R 158.23.160.9
+ssh-keygen -R 54.157.214.128
 ```
 
 ### `Too many authentication failures`
@@ -268,7 +272,7 @@ ssh-keygen -R 158.23.160.9
 Tu cliente ofreció demasiadas llaves (por ejemplo, desde un agente SSH) y el servidor cortó. Usa solo la llave correcta:
 
 ```
-sftp -o IdentitiesOnly=yes -i ~/.ssh/id_ecdsa est_nombre_apellido@158.23.160.9
+sftp -o IdentitiesOnly=yes -i ~/.ssh/id_ecdsa est_nombre_apellido@54.157.214.128
 ```
 
 ### `WARNING: UNPROTECTED PRIVATE KEY FILE!` / `Permissions ... are too open`
