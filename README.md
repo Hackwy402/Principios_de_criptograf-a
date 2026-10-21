@@ -17,7 +17,10 @@ En este taller vas a:
 
 > ⚠️ **El servidor cambió de dirección** (antes `158.23.160.9`). Usa la IP y las huellas de esta guía. Si tu `known_hosts` guarda la IP vieja, no te afecta: la nueva es un servidor distinto.
 
-**Hay dos actividades.** El libro para la primera; para la segunda, el laboratorio forense: **[LAB_FORENSE.md](LAB_FORENSE.md)**.
+**Actividades:**
+> - Primera: descargar el libro por SFTP.
+> - Laboratorio forense I — integridad y cadena de custodia: **[LAB_FORENSE.md](LAB_FORENSE.md)**.
+> - Laboratorio forense II — reconstruir un incidente (Autopsy): **[LAB_INCIDENTE.md](LAB_INCIDENTE.md)**.
 
 ---
 
